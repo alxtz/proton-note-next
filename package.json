@@ -1,0 +1,15 @@
+{
+  "name": "proton-note-next",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Alex Tzeng <alxtz.tw@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server  --config webpack.config.js"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
