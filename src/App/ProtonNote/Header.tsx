@@ -15,6 +15,7 @@ export default function Header() {
       <NewNote
         disabled={mode === "edit"}
         onClick={() => dispatch(addNewNote())}
+        data-test-id="new-button"
       >
         + New Note
       </NewNote>

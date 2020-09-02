@@ -5,11 +5,11 @@ const wait = async (delay: number) => {
 };
 
 export const encrypt = async (data: string) => {
-  await wait(1500);
+  await wait(500);
   return data;
 };
 
 export const decrypt = async (data: string) => {
-  await wait(1500);
+  await wait(500);
   return data;
 };

@@ -14,8 +14,8 @@ export default function ProtonNote() {
     (state: RootState) => state.notes
   );
 
+  /* select a default note */
   useEffect(() => {
-    // select a default note
     dispatch(chooseNoteById("note_id_0"));
   }, []);
 

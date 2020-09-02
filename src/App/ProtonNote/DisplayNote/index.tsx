@@ -39,12 +39,13 @@ export default function DisplayNotePanel() {
 
   return (
     <Container>
-      <Title>
+      <Title data-test-id="view-mode-title">
         {mode === "edit" ? (
           <TitleInput
             value={editingTitle}
             onChange={e => dispatch(updateEditingTitle(e.target.value))}
             placeholder="Title"
+            data-test-id="edit-mode-title-input"
           />
         ) : (
           notes[currentNoteId].title
@@ -55,11 +56,13 @@ export default function DisplayNotePanel() {
           <EditTextarea
             value={editingMd}
             onChange={e => dispatch(updateEditingMd(e.target.value))}
+            data-test-id="edit-mode-md-input"
           />
         ) : (
           <div
             className="markdown-body"
             dangerouslySetInnerHTML={{ __html: htmlStringFromMd }}
+            data-test-id="view-mode-content"
           />
         )}
       </Render>
@@ -69,13 +72,21 @@ export default function DisplayNotePanel() {
             <Button onClick={() => dispatch(chooseNoteById(currentNoteId))}>
               Cancel
             </Button>
-            <Button onClick={() => dispatch(saveNote())}>Save</Button>
+            <Button
+              data-test-id="save-button"
+              onClick={() => dispatch(saveNote())}
+            >
+              Save
+            </Button>
             <Button onClick={() => dispatch(deleteNoteById(currentNoteId))}>
               Delete
             </Button>
           </>
         ) : (
-          <Button onClick={() => dispatch(editNoteById(currentNoteId))}>
+          <Button
+            data-test-id="edit-button"
+            onClick={() => dispatch(editNoteById(currentNoteId))}
+          >
             Edit
           </Button>
         )}

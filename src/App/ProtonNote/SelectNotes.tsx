@@ -19,6 +19,7 @@ export default function SelectNotes() {
           onClick={() => dispatch(chooseNoteById(id))}
           disabled={mode === "edit"}
           current={currentNoteId === id}
+          data-test-id="selectable-note"
         >
           {mode === "edit" && currentNoteId === id ? editingTitle : item.title}
         </Note>
