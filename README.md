@@ -9,12 +9,6 @@
 7. Provide some cypress e2e tests, automatic those QA process
 8. The project isn't hosted on GitHub pages anymore (need to manually clone it)
 
-# Screenshots
-
-![](https://i.imgur.com/ZBaKm8j.png)
-![](https://i.imgur.com/49XPVPw.png)
-![](https://i.imgur.com/4o7eR5z.png)
-
 # Test cases
 
 - [x] **View mode**
