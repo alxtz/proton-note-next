@@ -1,85 +1,6 @@
-import React from "react";
 import styled from "@emotion/styled";
-import { useSelector, useDispatch } from "react-redux";
-import marked from "marked";
-import { RootState } from "~/store/types";
-import {
-  chooseNoteById,
-  editNoteById,
-  saveNote,
-  deleteNoteById,
-  updateEditingTitle,
-  updateEditingMd
-} from "~/store/notes/actions";
 
-type Props = {
-  title: string;
-};
-
-export default function DisplayNotePanel({ title }: Props) {
-  const dispatch = useDispatch();
-  const {
-    decryptedMd,
-    mode,
-    currentNoteId,
-    editingTitle,
-    editingMd
-  } = useSelector((state: RootState) => state.notes);
-
-  const htmlStringFromMd = marked(decryptedMd);
-
-  if (currentNoteId === null) {
-    return null;
-  }
-
-  return (
-    <Container>
-      <Title>
-        {mode === "edit" ? (
-          <TitleInput
-            value={editingTitle}
-            onChange={e => dispatch(updateEditingTitle(e.target.value))}
-            placeholder="Title"
-          />
-        ) : (
-          title
-        )}
-      </Title>
-      <Render>
-        {mode === "edit" ? (
-          <EditTextarea
-            value={editingMd}
-            onChange={e => dispatch(updateEditingMd(e.target.value))}
-          />
-        ) : (
-          <div
-            className="markdown-body"
-            dangerouslySetInnerHTML={{ __html: htmlStringFromMd }}
-          />
-        )}
-      </Render>
-      <BottomBar>
-        {mode === "edit" ? (
-          <>
-            <Button onClick={() => dispatch(chooseNoteById(currentNoteId))}>
-              Cancel
-            </Button>
-            <Button onClick={() => dispatch(saveNote())}>Save</Button>
-            <Button onClick={() => dispatch(deleteNoteById(currentNoteId))}>
-              Delete
-            </Button>
-          </>
-        ) : (
-          <Button onClick={() => dispatch(editNoteById(currentNoteId))}>
-            Edit
-          </Button>
-        )}
-      </BottomBar>
-    </Container>
-  );
-}
-
-const Container = styled.div`
+export const Container = styled.div`
   flex-grow: 1;
   flex-shrink: 0;
   flex-basis: 0px;
@@ -87,7 +8,7 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const Title = styled.div`
+export const Title = styled.div`
   padding: 0px 14px;
   font-weight: 500;
   font-size: 24px;
@@ -98,7 +19,7 @@ const Title = styled.div`
   align-items: center;
 `;
 
-const TitleInput = styled.input`
+export const TitleInput = styled.input`
   padding: 5px 12px;
   font-size: 14px;
   line-height: 20px;
@@ -125,14 +46,14 @@ const TitleInput = styled.input`
   }
 `;
 
-const Render = styled.div`
+export const Render = styled.div`
   flex-grow: 1;
   display: flex;
   padding: 10px;
   overflow: auto;
 `;
 
-const EditTextarea = styled.textarea`
+export const EditTextarea = styled.textarea`
   display: block;
   flex-grow: 1;
   padding: 8px;
@@ -159,14 +80,14 @@ const EditTextarea = styled.textarea`
   }
 `;
 
-const BottomBar = styled.div`
+export const BottomBar = styled.div`
   padding: 10px 20px;
   font-weight: bold;
   border-top: 1px solid rgb(172, 176, 191);
   background: #e6eaf0;
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   outline: 0;
   border: 1px solid #657ee4;
   border-radius: 3px;

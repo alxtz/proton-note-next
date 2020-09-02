@@ -1,4 +1,4 @@
-export type NoteObject = {
+export type Note = {
   title: string;
   encryptedMd: string;
 };

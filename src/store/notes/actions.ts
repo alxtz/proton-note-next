@@ -5,11 +5,12 @@ import { ActionTypes, NOTES_ACTIONS } from "./types";
 
 export const addNewNote = () => (dispatch: Dispatch<ActionTypes>) => {
   const newNoteId = v4();
+  const postfix = new Date().toLocaleTimeString();
 
   dispatch({
     type: NOTES_ACTIONS.ADD_NEW_NOTE,
     newNoteId,
-    title: `New untitled note ${new Date().toLocaleTimeString()}`
+    title: `New untitled note ${postfix}`
   });
 
   dispatch(chooseNoteById(newNoteId));
@@ -75,21 +76,12 @@ export const saveNote = () => async (
 };
 
 export const deleteNoteById = (noteId: string) => async (
-  dispatch: Dispatch<ActionTypes>,
-  getState: GetState
+  dispatch: Dispatch<ActionTypes>
 ) => {
-  // const deleteNote = (noteId: string) => {
-  //   setCurrentNoteId(null);
-  //   setMode("view");
-  //
-  //   const newNoteItems = {
-  //     ...noteItems
-  //   };
-  //
-  //   delete newNoteItems[noteId];
-  //
-  //   setNoteItems(newNoteItems);
-  // };
+  dispatch({
+    type: NOTES_ACTIONS.DELETE_NOTE,
+    noteId
+  });
 };
 
 export const updateEditingTitle = (title: string) => (

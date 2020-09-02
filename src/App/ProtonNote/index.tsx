@@ -1,26 +1,16 @@
-import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import styled from "@emotion/styled";
 import { RootState } from "~/store/types";
-import {
-  chooseNoteById,
-  editNoteById,
-  saveNote,
-  deleteNoteById
-} from "~/store/notes/actions";
-import { NoteObject } from "~/store/notes/types";
+import { chooseNoteById } from "~/store/notes/actions";
 import loadingSvg from "~/assets/loading.svg";
-
 import Header from "./Header";
 import SelectNotes from "./SelectNotes";
 import DisplayNote from "./DisplayNote";
 
 export default function ProtonNote() {
   const dispatch = useDispatch();
-
-  const noteItems = useSelector((state: RootState) => state.notes.notes);
-  const { currentNoteId, loading, editingTitle, editingMd } = useSelector(
+  const { currentNoteId, loading, notes } = useSelector(
     (state: RootState) => state.notes
   );
 
@@ -38,10 +28,10 @@ export default function ProtonNote() {
         <Header />
         <Main>
           <SelectNotes />
-          {currentNoteId === null || noteItems[currentNoteId] === undefined ? (
+          {currentNoteId === null || notes[currentNoteId] === undefined ? (
             <Empty>No note selected</Empty>
           ) : (
-            <DisplayNote title={noteItems[currentNoteId].title} />
+            <DisplayNote />
           )}
         </Main>
       </Container>

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { useSelector, useDispatch } from "react-redux";
-
 import { Note } from "~/components/Note";
 import { RootState } from "~/store/types";
 import { chooseNoteById } from "~/store/notes/actions";

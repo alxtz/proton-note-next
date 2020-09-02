@@ -3,8 +3,8 @@ import { Provider } from "react-redux";
 
 import store from "~/store/store";
 
-import GlobalStyles from "./GlobalStyles";
 import ProtonNote from "./ProtonNote";
+import GlobalStyles from "./GlobalStyles";
 
 function App() {
   return (

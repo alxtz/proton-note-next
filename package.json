@@ -6,12 +6,16 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.js",
-    "tsc/dev": "tsc --noEmit --watch"
+    "tsc/dev": "tsc --noEmit --watch",
+    "cypress": "cypress run --config video=false",
+    "e2e": "start-server-and-test dev http://localhost:30000 cypress",
+    "e2e/dev": "cypress open --config video=false"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/preset-typescript": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "cypress": "^5.0.0",
     "html-webpack-plugin": "^4.3.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",

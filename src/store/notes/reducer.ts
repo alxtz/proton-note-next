@@ -1,9 +1,9 @@
 import { Reducer } from "redux";
-import defaultNotes from "~/assets/defaultNotes.json";
-import { ActionTypes, NOTES_ACTIONS, NoteObject, Mode } from "./types";
+import DEFAULT_NOTES from "~/assets/defaultNotes.json";
+import { ActionTypes, NOTES_ACTIONS, Note, Mode } from "./types";
 
 const initialState: State = {
-  notes: defaultNotes,
+  notes: DEFAULT_NOTES,
   mode: "view",
   currentNoteId: null,
   loading: false,
@@ -13,7 +13,7 @@ const initialState: State = {
 };
 
 type State = {
-  notes: { [key: string]: NoteObject };
+  notes: { [key: string]: Note };
   mode: Mode;
   currentNoteId: string | null;
   loading: boolean;
@@ -81,6 +81,18 @@ export const notes: Reducer<State, ActionTypes> = (
         mode: "view",
         loading: false,
         decryptedMd: action.decryptedMd
+      };
+    }
+
+    case NOTES_ACTIONS.DELETE_NOTE: {
+      const newNotes = { ...state.notes };
+      delete newNotes[action.noteId];
+
+      return {
+        ...state,
+        notes: newNotes,
+        currentNoteId: null,
+        mode: "view"
       };
     }
 

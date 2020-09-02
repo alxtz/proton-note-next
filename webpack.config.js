@@ -13,7 +13,7 @@ module.exports = {
     }
   },
   devServer: {
-    port: 3310,
+    port: 3210,
     quiet: true,
     overlay: true,
     open: true
